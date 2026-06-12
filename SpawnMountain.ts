@@ -28,7 +28,7 @@ async function start() {
     const colorBase = (i / 7) * 0.25;
     const colorMultiplier = (i / 7) * 0.05;
 
-    spawnCircle(2.5 + (counter * ((counter + 2) / 3) * 2), counter + 1, 2.5 + counter, i, i * 6, 1, 1, colorBase, colorMultiplier, colorBase, colorMultiplier, colorBase, colorMultiplier, (i === 6));
+    spawnCircle(2.5 + (counter * ((counter + 3) / 4) * 2), counter + 1, 2.5 + counter * 2, i, i * 6, 1, 1, colorBase, colorMultiplier, colorBase, colorMultiplier, colorBase, colorMultiplier, (i === 6));
     i--;
   }
 }
