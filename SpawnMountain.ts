@@ -12,7 +12,7 @@ async function start() {
   await Async.wait(250);
   spawnCircle(0.75, 2, 8, 45, 1, 1, 0.05, 0.05, 0.25, 0.25, 0.05, 0.05, true);
   await Async.wait(250);
-  spawnCircle(1.5, 2, 7, 45, 1, 1, 0.05, 0.05, 0.05, 0.25, 0.05, 0.05, true);
+  spawnCircle(2.5, 2.5, 7, 45, 1, 1, 0.05, 0.05, 0.15, 0.25, 0.05, 0.05, true);
 
   // Use while loop to spawn remainder
 }
@@ -20,17 +20,19 @@ async function start() {
 function spawnCircle(yPos: number, height: number, radius: number, count: number, blockRadiusStart: number, blockRadiusMultiplier: number, redColorStart: number, redColorMultiplier: number, greenColorStart: number, greenColorMultiplier: number, blueColorStart: number, blueColorMultiplier: number, hasEntrance: boolean) {
   for (let i = 0; i < count; i++) {
     const lerpPercent = i / count;
-    const radianPos = Math.PI * 2 * lerpPercent;
-
-    const x = Math.cos(radianPos);
-    const z = Math.sin(radianPos);
-
-    const dir = new Vector3(x, 0, z);
-    const pos = dir.multiply(radius);
-    pos.y = yPos + (-0.5 * Math.random());
-
-    const blockRadius = blockRadiusStart + (blockRadiusMultiplier * Math.random());
-
-    spawnPrimitive.cube(pos, new Vector3(blockRadius, height, blockRadius), Quaternion.fromEuler(new Vector3(0, Math.random() * Math.PI, 0)), new Color(redColorStart + (redColorMultiplier * Math.random()), greenColorStart + (greenColorMultiplier * Math.random()), blueColorStart + (blueColorMultiplier * Math.random())), 1, true, 'Static', undefined);
+    if (!hasEntrance || lerpPercent > 0.075) {
+      const radianPos = Math.PI * 2 * lerpPercent;
+  
+      const x = Math.cos(radianPos);
+      const z = Math.sin(radianPos);
+  
+      const dir = new Vector3(x, 0, z);
+      const pos = dir.multiply(radius);
+      pos.y = yPos + (-0.5 * Math.random());
+  
+      const blockRadius = blockRadiusStart + (blockRadiusMultiplier * Math.random());
+  
+      spawnPrimitive.cube(pos, new Vector3(blockRadius, height, blockRadius), Quaternion.fromEuler(new Vector3(0, Math.random() * Math.PI, 0)), new Color(redColorStart + (redColorMultiplier * Math.random()), greenColorStart + (greenColorMultiplier * Math.random()), blueColorStart + (blueColorMultiplier * Math.random())), 1, true, 'Static', undefined);
+    }
   }
 }
