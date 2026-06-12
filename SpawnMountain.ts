@@ -28,7 +28,7 @@ async function start() {
     const colorBase = (i / 7) * 0.25;
     const colorMultiplier = (i / 7) * 0.05;
 
-    spawnCircle(2.5 + (counter * ((counter + 2) / 3) * 2), counter + 1, 2.5 + counter, i, i * 6, 1, 1, colorBase, colorMultiplier, colorBase, colorMultiplier, colorBase, colorMultiplier, false);
+    spawnCircle(2.5 + (counter * ((counter + 2) / 3) * 2), counter + 1, 2.5 + counter, i, i * 6, 1, 1, colorBase, colorMultiplier, colorBase, colorMultiplier, colorBase, colorMultiplier, (i === 6));
     i--;
   }
 }
@@ -39,8 +39,8 @@ function spawnCircle(yPos: number, height: number, heightMultiplier: number, rad
     if (!(hasEntrance && ((lerpPercent > 0.5) && (lerpPercent < 0.575)))) {
       const radianPos = Math.PI * 2 * lerpPercent;
 
-      const x = Math.cos(radianPos);
-      const z = Math.sin(radianPos);
+      const x = Math.sin(radianPos);
+      const z = Math.cos(radianPos);
 
       const dir = new Vector3(x, 0, z);
       const pos = dir.multiply(radius);
