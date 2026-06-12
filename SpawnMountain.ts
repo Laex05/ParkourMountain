@@ -26,17 +26,17 @@ async function start() {
 
     // White at the top?
     const colorBase = (i / 7) * 0.25;
-    const colorMultiplier = (i / 7) * 0.15;
+    const colorMultiplier = (i / 7) * 0.05;
 
     spawnCircle(2.5 + (counter * 2), 2, 2.5, i, i * 6, 1, 1, colorBase, colorMultiplier, colorBase, colorMultiplier, colorBase, colorMultiplier, true);
-    i++;
+    i--;
   }
 }
 
 function spawnCircle(yPos: number, height: number, heightMultiplier: number, radius: number, count: number, blockRadiusStart: number, blockRadiusMultiplier: number, redColorStart: number, redColorMultiplier: number, greenColorStart: number, greenColorMultiplier: number, blueColorStart: number, blueColorMultiplier: number, hasEntrance: boolean) {
   for (let i = 0; i < count; i++) {
     const lerpPercent = i / count;
-    if (!hasEntrance || lerpPercent > 0.075) {
+    if (!hasEntrance || ((lerpPercent > 0.5) && (lerpPercent < 0.575))) {
       const radianPos = Math.PI * 2 * lerpPercent;
 
       const x = Math.cos(radianPos);
