@@ -14,11 +14,23 @@ async function start() {
   await Async.wait(250);
   spawnCircle(0.35, 0.7, 0.15, 10, 30, 2.5, 2, 0.1, 0.05, 0.25, 0.75, 0.1, 0.05, false);
   await Async.wait(250);
-  spawnCircle(0.75, 2, 0.5, 8, 45, 1, 1, 0.05, 0.05, 0.25, 0.25, 0.05, 0.05, true);
+  spawnCircle(0.75, 2, 1, 8, 45, 1, 1, 0.05, 0.05, 0.25, 0.25, 0.05, 0.05, true);
   await Async.wait(250);
-  spawnCircle(2.5, 2.5, 1, 7, 40, 1, 1, 0.05, 0.05, 0.15, 0.25, 0.05, 0.05, true);
+  spawnCircle(2.5, 2.5, 2.5, 7, 40, 1, 1, 0.05, 0.05, 0.15, 0.25, 0.05, 0.05, true);
 
-  // Use while loop to spawn remainder
+  let i = 6;
+
+  while (i > 0) {
+    await Async.wait(250);
+    const counter = (7 - i);
+
+    // White at the top?
+    const colorBase = (i / 7) * 0.25;
+    const colorMultiplier = (i / 7) * 0.15;
+
+    spawnCircle(2.5 + (counter * 2), 2, 2.5, i, i * 6, 1, 1, colorBase, colorMultiplier, colorBase, colorMultiplier, colorBase, colorMultiplier, true);
+    i++;
+  }
 }
 
 function spawnCircle(yPos: number, height: number, heightMultiplier: number, radius: number, count: number, blockRadiusStart: number, blockRadiusMultiplier: number, redColorStart: number, redColorMultiplier: number, greenColorStart: number, greenColorMultiplier: number, blueColorStart: number, blueColorMultiplier: number, hasEntrance: boolean) {
