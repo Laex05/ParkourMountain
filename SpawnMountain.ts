@@ -8,11 +8,15 @@ import { spawnPrimitive } from "./Yuu API/SpawnPrimitive";
 
 registerStart(start);
 async function start() {
-  spawnCircle(0.35, 0.7, 10, 50, 2.5, 2, 0.1, 0.05, 0.25, 0.75, 0.1, 0.05, false);
+  spawnCircle(0.35, 0.7, 3, 5, 2.5, 2, 0.1, 0.05, 0.25, 0.75, 0.1, 0.05, false);
+  await Async.wait(250);
+  spawnCircle(0.35, 0.7, 6, 10, 2.5, 2, 0.1, 0.05, 0.25, 0.75, 0.1, 0.05, false);
+  await Async.wait(250);
+  spawnCircle(0.35, 0.7, 10, 30, 2.5, 2, 0.1, 0.05, 0.25, 0.75, 0.1, 0.05, false);
   await Async.wait(250);
   spawnCircle(0.75, 2, 8, 45, 1, 1, 0.05, 0.05, 0.25, 0.25, 0.05, 0.05, true);
   await Async.wait(250);
-  spawnCircle(2.5, 2.5, 7, 45, 1, 1, 0.05, 0.05, 0.15, 0.25, 0.05, 0.05, true);
+  spawnCircle(2.5, 2.5, 7, 40, 1, 1, 0.05, 0.05, 0.15, 0.25, 0.05, 0.05, true);
 
   // Use while loop to spawn remainder
 }
